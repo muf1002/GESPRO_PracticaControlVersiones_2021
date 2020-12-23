@@ -18,20 +18,6 @@
 
 package com.davidmiguel.gobees;
 
-import com.davidmiguel.gobees.data.source.local.GoBeesDbConfig;
-
-import io.realm.Realm;
-
-/**
- * Deletes all date whenever the app is retarted.
- */
 public class App extends BaseApp {
 
-    @Override
-    protected void initRealm() {
-        // Initialize Realm. Should only be done once when the application starts.
-        Realm.init(this);
-        GoBeesDbConfig realmConfig = new GoBeesDbConfig();
-        Realm.setDefaultConfiguration(realmConfig.getRealmConfiguration());
-    }
 }

@@ -20,24 +20,45 @@ package com.davidmiguel.gobees;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.core.CrashlyticsCore;
 import com.davidmiguel.gobees.data.source.local.GoBeesDbConfig;
+import com.davidmiguel.gobees.logging.Log;
 
+import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 
-/**
- * Main app.
- */
-public class GoBeesApp extends Application {
+public class BaseApp extends Application {
+
     @Override
     public void onCreate() {
         super.onCreate();
+        initCrashlytics();
+        initLogger();
+        initRealm();
+    }
+
+    protected void initCrashlytics() {
+        // Set up Crashlytics, disabled for mock builds
+        Fabric.with(this, new Crashlytics.Builder().core(new CrashlyticsCore.Builder()
+                .disabled(isMock()).build())
+                .build());
+    }
+
+    protected void initLogger() {
+        Log.initLogger();
+    }
+
+    protected void initRealm() {
         // Initialize Realm. Should only be done once when the application starts.
         Realm.init(this);
         // Get Realm config
         GoBeesDbConfig realmConfig = new GoBeesDbConfig();
-        // Delete all
-        Realm.deleteRealm(realmConfig.getRealmConfiguration());
-        // Set config
         Realm.setDefaultConfiguration(realmConfig.getRealmConfiguration());
     }
+
+    public static boolean isMock() {
+        return "mock".equals(BuildConfig.FLAVOR);
+    }
+
 }
