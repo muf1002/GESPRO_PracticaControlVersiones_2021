@@ -34,6 +34,8 @@ Incluid debajo el nombre de los miembros del grupo:
 
 - [Pablo Zarzosa Buitrago](https://github.com/pzb1001)
 
+- [Iñigo Sanz Delgado](https://github.com/isd1002)
+
 ## License
 
 Copyright (c) 2016 - 2017 David Miguel Lozano
