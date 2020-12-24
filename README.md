@@ -30,8 +30,6 @@ Find more information on our website: http://gobees.io.
 GoBees!
 
 Incluid debajo el nombre de los miembros del grupo:
-- [Iñigo Sanz Delgado](https://github.com/isd1002)
-
 - [Marcos Ubierna Fernández](https://github.com/muf1002)
 
 - [Pablo Zarzosa Buitrago](https://github.com/pzb1001)
